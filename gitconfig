@@ -1,0 +1,9 @@
+[alias]
+	st = status
+	co = checkout
+
+[include]
+    path = ~/.gitconfig.local
+
+[user]
+    useConfigOnly = true
