@@ -2,12 +2,17 @@
 	st = status
 	co = checkout
 	pa = pull --all --prune
+	tree = log --oneline --decorate --graph --all
+
+[core]
+	editor = vim
 
 [include]
-    path = ~/.gitconfig.local
+	path = ~/.gitconfig.local
 
 [push]
 	autoSetupRemote = true
 
 [user]
-    useConfigOnly = true
+	useConfigOnly = true
+
