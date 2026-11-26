@@ -1,0 +1,12 @@
+[alias]
+	st = status
+	co = checkout
+
+[include]
+    path = ~/.gitconfig.local
+
+[push]
+	autoSetupRemote = true
+
+[user]
+    useConfigOnly = true

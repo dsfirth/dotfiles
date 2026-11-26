@@ -7,7 +7,14 @@ param (
 switch ($Target)
 {
     'all'   { $_ = "update" }
-    'install' {
+    { $_ -in 'install', 'install-git' } {
+        Write-Output "Backing up existing .gitconfig to $HOME/.gitconfig.bak,"
+        if (Test-Path -Path "$HOME\.gitconfig") { Move-Item -Path "$HOME\.gitconfig" -Destination "$HOME\.gitconfig.bak" }
+
+        Write-Output "linking up new .gitconfig,"
+        New-Item -Path "$HOME\.gitconfig" -ItemType Junction -Value "$PSScriptRoot\gitconfig"
+    }
+    { $_ -in 'install', 'install-vim' } {
         Write-Output "Backing up existing .vim and _vimrc to $HOME/.vim.bak, $HOME/_vimrc.bak,"
         if (Test-Path -Path "$HOME\.vim") { Move-Item -Path "$HOME\.vim" -Destination "$HOME\.vim.bak" }
         if (Test-Path -Path "$HOME\_vimrc") { Move-Item -Path "$HOME\_vimrc" -Destination "$HOME\_vimrc.bak" }
