@@ -1,8 +1,14 @@
 [alias]
-	st = status
 	co = checkout
+	fa = fetch --all --prune
+	main = checkout main
+	main-branch = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
+	master = checkout master
+	origin-main-branch = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f3,4
 	pa = pull --all --prune
+	st = status
 	tree = log --oneline --decorate --graph --all
+	trunk = !git main-branch | xargs git co
 
 [core]
 	editor = vim
